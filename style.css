@@ -149,3 +149,46 @@ form button { /* ... */ }
 
 /* Smooth scrolling (same as before) */
 html { /* ... */ }
+.container {
+    width: 90%; /* Fluid width */
+    max-width: 1200px; /* Maximum width on larger screens */
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsive columns */
+    gap: 2rem;
+}
+
+@media (max-width: 768px) {
+    .gallery-grid {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Adjust columns for smaller screens */
+    }
+}
+/* Styles for smaller screens (e.g., mobile) */
+@media (max-width: 768px) {
+    body {
+        font-size: 16px;
+    }
+    nav ul {
+        flex-direction: column; /* Stack navigation links vertically */
+    }
+    .gallery-grid {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Adjust grid columns */
+    }
+}
+
+/* Styles for larger screens (e.g., desktop) */
+@media (min-width: 992px) {
+    body {
+        font-size: 18px;
+    }
+    nav ul {
+        flex-direction: row; /* Display navigation links horizontally */
+    }
+    .gallery-grid {
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); /* Adjust grid columns */
+    }
+}

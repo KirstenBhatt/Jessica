@@ -7,6 +7,45 @@
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@300;400&display=swap" rel="stylesheet">
 </head>
+<style>
+    .carousel {
+      width: 500px; /* Adjust as needed */
+      margin: 0 auto;
+      position: relative;
+      overflow: hidden; /* Hide images outside the container */
+    }
+  
+    .carousel-inner {
+      display: flex; /* Arrange images horizontally */
+      transition: transform 0.5s ease-in-out; /* Smooth transitions */
+    }
+  
+    .carousel-item {
+      flex: 0 0 100%; /* Each image takes full width */
+    }
+  
+    .carousel-item img {
+      width: 100%;
+      display: block; /* Prevents small gap below image */
+    }
+  
+    .carousel-controls {
+      position: absolute;
+      bottom: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+    }
+  
+    .carousel-control {
+      background-color: rgba(0, 0, 0, 0.5);
+      color: white;
+      padding: 5px 10px;
+      border: none;
+      cursor: pointer;
+      margin: 0 5px;
+    }
+  </style>
 <body>
     <header>
         <nav>
@@ -31,23 +70,30 @@
     <section id="gallery">
         <div class="container">
             <h2>Gallery</h2>
-            <div class="gallery-grid">
-                <div class="gallery-item">
-                    <img src="Belly.jpg" alt="Photo 1">
+            <div class="carousel">
+                <div class="carousel-inner" id="carousel-inner">
+                  <div class="carousel-item"><img src="./Images/Belly.jpg" alt="Image 1"></div>
+                  <div class="carousel-item"><img src="./Images/BellyLuv.jpg" alt="Image 2"></div>
+                  <div class="carousel-item"><img src="./Images/dog.jpg" alt="Image 3"></div>
+                  <div class="carousel-item"><img src="./Images/Navid.jpg" alt="Image 4"></div>
+                  <div class="carousel-item"><img src="./Images/meg.jpg" alt="Image 5"></div>
+                  <div class="carousel-item"><img src="./Images/Meg2.jpg" alt="Image 6"></div>
+                  <div class="carousel-item"><img src="./Images/Manik.jpg" alt="Image 7"></div>
+                  <div class="carousel-item"><img src="./Images/neice.JPG" alt="Image 8"></div>
+                  <div class="carousel-item"><img src="./Images/Boy2.jpg" alt="Image 9"></div>
+                  <div class="carousel-item"><img src="./Images/Boy.jpg" alt="Image 10"></div>
+                  <div class="carousel-item"><img src="./Images/Dog2.jpg" alt="Image 11"></div>
+                  <div class="carousel-item"><img src="./Images/Dog3.jpg" alt="Image 12"></div>
+                  <div class="carousel-item"><img src="./Images/Foot.jpg" alt="Image 13"></div>
+                  <div class="carousel-item"><img src="./Images/green.JPG" alt="Image 14"></div>
+                  <div class="carousel-item"><img src="./Images/Swim.jpg" alt="Image 15"></div>
+                  <div class="carousel-item"><img src="./Images/Tree.jpg" alt="Image 16"></div>
+                  <div class="carousel-item"><img src="./Images/baby.jpg" alt="Image 17"></div>
+
                 </div>
-                <div class="gallery-item">
-                    <img src="BellyLuv.jpg" alt="Photo 2">
-                </div>
-                <div class="gallery-item">
-                    <img src="Navid.jpg" alt="Photo 3">
-                </div>
-                <div class="gallery-item">
-                    <img src="meg.jpg" alt="Photo 4">
-                </div>
-                <div class="gallery-item">
-                    <img src="dog.jpg" alt="Photo 5">
-                </div>
-                <div class="gallery-item"><img src="Meg2.jpg" alt="Photo 6"></div>
+                <div class="carousel-controls">
+                  <button class="carousel-control" onclick="prevSlide()">Previous</button>
+                  <button class="carousel-control" onclick="nextSlide()">Next</button>
                 </div>
         </div>
     </section>
@@ -55,7 +101,11 @@
     <section id="about">
         <div class="container">
             <h2>About Me</h2>
-            <p>Tell your story here!  Share your passion for photography, your experience, and your approach.  Include a professional photo of yourself.</p>
+            <p>From the warmth of home to the comfort of yours, 
+                I weave stories of love and laughter through photography. 
+                My relaxed sessions capture the genuine spirit of your family, 
+                allowing you to be fully present while I preserve these precious 
+                moments for generations to come.</p>
         </div>
     </section>
 
@@ -73,5 +123,26 @@
     </footer>
 
     <script src="script.js"></script>
+    <script>
+        let currentSlide = 0;
+        const totalSlides = document.querySelectorAll('.carousel-item').length;
+        const carouselInner = document.getElementById('carousel-inner');
+        
+        function showSlide(n) {
+          carouselInner.style.transform = `translateX(-${n * 100}%)`;
+        }
+        
+        function nextSlide() {
+          currentSlide = (currentSlide + 1) % totalSlides; // Loop back to the beginning
+          showSlide(currentSlide);
+        }
+        
+        function prevSlide() {
+          currentSlide = (currentSlide - 1 + totalSlides) % totalSlides; // Loop to the end
+          showSlide(currentSlide);
+        }
+        
+        showSlide(currentSlide); // Show the initial slide
+        </script>
 </body>
 </html>
